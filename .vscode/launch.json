@@ -1,0 +1,51 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [{
+            "name": "Program 1: Good array",
+            "type": "python",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${cwd}/src/"
+            },
+            "program": "${cwd}/src/programs/program1.py",
+            "args": ["${workspaceFolder}/data/arrays/good.json"]
+        },
+        {
+            "name": "Program 1: Bad array",
+            "type": "python",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${cwd}/src/"
+            },
+            "program": "${cwd}/src/programs/program1.py",
+            "args": ["${workspaceFolder}/data/arrays/bad.json"]
+        },
+        {
+            "name": "Program 1: Good object",
+            "type": "python",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${cwd}/src/"
+            },
+            "program": "${cwd}/src/programs/program1.py",
+            "args": ["${workspaceFolder}/data/objects/good.json"]
+        },
+        {
+            "name": "Program 1: Bad object",
+            "type": "python",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${cwd}/src/"
+            },
+            "program": "${cwd}/src/programs/program1.py",
+            "args": ["${workspaceFolder}/data/objects/bad.json"]
+        }
+    ]
+}

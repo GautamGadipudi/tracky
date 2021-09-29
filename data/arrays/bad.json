@@ -1,0 +1,24 @@
+[
+    {
+      "index": 0,
+      "_id": "6138c30ea80cc35848f9e87d",
+      "isActive": false,
+      "name": "Helen Zimmerman",
+      "gender": "female",
+      "email": "helenzimmerman@emtrak.com",
+      "age": 39,
+      "registered": "2021-07-26T12:33:43 +04:00",
+      "friends": "Katheryn Pena"
+    },
+    {
+      "index": 1,
+      "_id": "6138c30ea364caca79f75989",
+      "isActive": true,
+      "name": "Coffey Espinoza",
+      "gender": "male",
+      "email": "coffeyespinoza@emtrak.com",
+      "age": 32,
+      "registered": "2021-08-28T09:46:59 +04:00",
+      "friends": "Gordon Hopper"
+    }
+  ]
