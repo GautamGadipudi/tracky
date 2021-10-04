@@ -28,7 +28,8 @@ class Tracker:
                 "line_no": prev_prev_frame_info.lineno,
                 "function": prev_prev_frame_info.function,
                 "file_name": prev_prev_frame_info.filename,
-                "module_name": inspect.getmodulename(prev_prev_frame_info.filename)
+                "module_name": inspect.getmodulename(prev_prev_frame_info.filename),
+                "code_context": prev_prev_frame_info.code_context
             },
             "datatype": type(prev_frame.f_locals['self']).__name__,
             "function": prev_frame_info.function
@@ -39,5 +40,5 @@ class Tracker:
             output_file_name = f'{details["previous_frame"]["module_name"]}_{Tracker.timestamp}.jsonl'
             output_file_path = f'{Tracker.output_directory}{output_file_name}'
             with open(f'{output_file_path}', mode='a') as f:
-                data = json.dumps(details, indent=4)
+                data = json.dumps(details)
                 f.write(f'{data}\n')
