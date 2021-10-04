@@ -1,33 +1,21 @@
 import sys
 import json
-import os
 
-from tracky.data_types import getMyCollection, Tracker
-
+from tracky.data_types import getMyCollection
 
 def main():
     fname = sys.argv[1]
     f = open(fname)
-    users = json.load(f)
+    user = json.load(f)
 
-    user = getMyCollection(users)
+    myUser = getMyCollection(user)
 
-    # Program logic / operations
-    try:
-        name = user['name']
-        freinds = user['friends']
-        friend_count = len(user['friends'])
+    # Operation 1 (__len__)
+    friend_count = len(myUser['friends'])
 
-        for friend in user['friends']:
-            print(f"{friend}\n")
-
-        print(f"{name} has {friend_count} friends.")
-    except Exception as e:
-        print(e)
-    finally:
-        Tracker.dump(
-            "./output/", f"program1_{os.path.basename(fname).split('.')[0]}")
-
+    # Operation 2 (__iter__)
+    for friend in myUser['friends']:
+        print(friend)
 
 if __name__ == "__main__":
     main()

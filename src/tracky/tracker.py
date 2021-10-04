@@ -1,42 +1,42 @@
 import inspect
 import json
 from time import time
+import logging
 
 
 class Tracker:
-    operations = []
+
+    # class level timestamp, used as a tag in output filename
+    timestamp = int(time())
+
+    # output path
+    output_directory = './output/'
 
     def track(self, is_log=True):
-        current_frame = get_current_frame().f_back
-        previous_frame = current_frame.f_back
+        ########################
+        # prev_frame: corresponds to the frame that called this method
+        # prev_prev_frame: corresponds to the frame that called the method that we want to track
+        ########################
+        prev_frame = inspect.currentframe().f_back
+        prev_prev_frame = prev_frame.f_back
 
-        current_frame_info = get_frame_info(current_frame)
-        previous_frame_info = get_frame_info(previous_frame)
+        prev_frame_info = inspect.getframeinfo(prev_frame)
+        prev_prev_frame_info = inspect.getframeinfo(prev_prev_frame)
 
         details = {
             "previous_frame": {
-                "filename": previous_frame_info[0],
-                "lineno": previous_frame_info[1],
-                "function": previous_frame_info[2],
-                "expression": previous_frame_info[3]
+                "line_no": prev_prev_frame_info.lineno,
+                "function": prev_prev_frame_info.function,
+                "file_name": prev_prev_frame_info.filename,
+                "module_name": inspect.getmodulename(prev_prev_frame_info.filename)
             },
-            "datatype": type(self).__name__,
-            "function": current_frame_info[2]
+            "datatype": type(prev_frame.f_locals['self']).__name__,
+            "function": prev_frame_info.function
         }
 
         if is_log:
-            Tracker.operations.append(details)
-
-    @staticmethod
-    def dump(dir='/', filename='output.json'):
-        filepath = f'{dir}{filename}_{int(time())}.json'
-        with open(filepath, 'w') as f:
-            json.dump(Tracker.operations, f, indent=4)
-
-
-def get_current_frame():
-    return inspect.currentframe().f_back
-
-
-def get_frame_info(frame):
-    return inspect.getframeinfo(frame)
+            output_file_name = f'{details["previous_frame"]["module_name"]}_{Tracker.timestamp}.jsonl'
+            output_file_path = f'{Tracker.output_directory}{output_file_name}'
+            with open(f'{output_file_path}', mode='a') as f:
+                data = json.dumps(details, indent=4)
+                f.write(f'{data}\n')
