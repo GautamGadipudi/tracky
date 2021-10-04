@@ -4,6 +4,19 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [{
+            "name": "Matcher example 1",
+            "type": "python",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${cwd}/src/"
+            },
+            "program": "${cwd}/src/tracky/matcher.py",
+            "args": [
+                "${workspaceFolder}/output/program1_1633357558.jsonl",
+                "${workspaceFolder}/output/program1_1633358012.jsonl"]
+        },
+        {
             "name": "Program 1: Good array",
             "type": "python",
             "request": "launch",
