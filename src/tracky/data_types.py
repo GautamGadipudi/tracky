@@ -1,7 +1,7 @@
 from tracky.tracker import Tracker
 
 
-class MyDict(dict, Tracker):
+class MyDict(dict):
     def __init__(self, data: list, *arg, **kw):
         super(MyDict, self).__init__(*arg, **kw)
         self.__assign__(data)
@@ -27,7 +27,7 @@ class MyDict(dict, Tracker):
                 raise Exception(f"Found unknown data type: {type(value)}")
 
 
-class MyList(list, Tracker):
+class MyList(list):
     def __init__(self, data: list, *arg, **kw):
         super(MyList, self).__init__(*arg, **kw)
         self.__assign__(data)
@@ -53,33 +53,33 @@ class MyList(list, Tracker):
                 raise Exception(f"Found unknown data type: {type(obj)}")
 
     def __len__(self):
-        self.track()
+        Tracker.track()
         return super().__len__()
 
     def __iter__(self):
-        self.track()
+        Tracker.track()
         return super().__iter__()
 
 
-class MyStr(str, Tracker):
+class MyStr(str):
     def __new__(cls, *args, **kw):
         return str.__new__(cls, *args, **kw)
 
     def __len__(self):
-        self.track()
+        Tracker.track()
         return super().__len__()
 
     def __iter__(self):
-        self.track()
+        Tracker.track()
         return super().__iter__()
 
 
-class MyInt(int, Tracker):
+class MyInt(int):
     def __new__(cls, *args, **kw):
         return int.__new__(cls, *args, **kw)
 
 
-class MyFloat(float, Tracker):
+class MyFloat(float):
     def __new__(cls, *args, **kw):
         return float.__new__(cls, *args, **kw)
 

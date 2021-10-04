@@ -12,7 +12,7 @@ class Tracker:
     # output path
     output_directory = './output/'
 
-    def track(self, is_log=True):
+    def track(is_log=True):
         ########################
         # prev_frame: corresponds to the frame that called this method
         # prev_prev_frame: corresponds to the frame that called the method that we want to track
@@ -34,6 +34,7 @@ class Tracker:
             "function": prev_frame_info.function
         }
 
+        print(f'module \"{details["previous_frame"]["module_name"]}\": in function \"{details["previous_frame"]["function"]}\" at line {details["previous_frame"]["line_no"]}')
         if is_log:
             output_file_name = f'{details["previous_frame"]["module_name"]}_{Tracker.timestamp}.jsonl'
             output_file_path = f'{Tracker.output_directory}{output_file_name}'
