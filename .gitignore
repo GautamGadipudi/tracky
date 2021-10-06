@@ -183,6 +183,6 @@ About
 .DS_Store
 
 # Tracking / logging output files
-output
+output/
 
 Playground

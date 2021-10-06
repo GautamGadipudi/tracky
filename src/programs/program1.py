@@ -3,9 +3,8 @@ import json
 
 from tracky.data_types import getMyCollection
 
-def main():
-    fname = sys.argv[1]
-    f = open(fname)
+def main(jsoninputpath: str):
+    f = open(jsoninputpath)
     user = json.load(f)
 
     myUser = getMyCollection(user)
