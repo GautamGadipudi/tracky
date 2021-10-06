@@ -12,7 +12,7 @@
             "env": {
                 "PYTHONPATH": "${cwd}/src/"
             },
-            "program": "${cwd}/src/matchy/matcher.py",
+            "program": "${cwd}/src/detector/detector.py",
             "args": [
                 "collect",
                 "--jsoninputpath", "./data/objects/bad.json"
@@ -26,7 +26,7 @@
             "env": {
                 "PYTHONPATH": "${cwd}/src/"
             },
-            "program": "${cwd}/src/matchy/matcher.py",
+            "program": "${cwd}/src/detector/detector.py",
             "args": [
                 "collect",
                 "--jsoninputpath", "./data/objects/good.json"
@@ -40,7 +40,7 @@
             "env": {
                 "PYTHONPATH": "${cwd}/src/"
             },
-            "program": "${cwd}/src/matchy/matcher.py",
+            "program": "${cwd}/src/detector/detector.py",
             "args": [
                 "match",
                 "--targetfile", "./output/eval/good.jsonl",
@@ -55,25 +55,11 @@
             "env": {
                 "PYTHONPATH": "${cwd}/src/"
             },
-            "program": "${cwd}/src/matchy/matcher.py",
+            "program": "${cwd}/src/detector/detector.py",
             "args": [
                 "match",
                 "--targetfile", "./output/eval/good.jsonl",
                 "--evaluationfile", "./output/eval/good.jsonl"
-            ]
-        },
-        {
-            "name": "Matcher example 1",
-            "type": "python",
-            "request": "launch",
-            "console": "integratedTerminal",
-            "env": {
-                "PYTHONPATH": "${cwd}/src/"
-            },
-            "program": "${cwd}/src/tracky/matcher.py",
-            "args": [
-                "${workspaceFolder}/output/program1_1633357558.jsonl",
-                "${workspaceFolder}/output/program1_1633358012.jsonl"
             ]
         },
         {
