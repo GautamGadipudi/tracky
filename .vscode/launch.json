@@ -5,7 +5,21 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Matcher: collect",
+            "name": "Matcher: collect bad JSON",
+            "type": "python",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${cwd}/src/"
+            },
+            "program": "${cwd}/src/matchy/matcher.py",
+            "args": [
+                "collect",
+                "--jsoninputpath", "./data/objects/bad.json"
+            ]
+        },
+        {
+            "name": "Matcher: collect good JSON",
             "type": "python",
             "request": "launch",
             "console": "integratedTerminal",
@@ -19,7 +33,7 @@
             ]
         },
         {
-            "name": "Matcher: match",
+            "name": "Matcher: match <bad> <good>",
             "type": "python",
             "request": "launch",
             "console": "integratedTerminal",
@@ -29,8 +43,23 @@
             "program": "${cwd}/src/matchy/matcher.py",
             "args": [
                 "match",
-                "--jsoninputpath", "./data/objects/bad.json",
-                "--evaluationfile", "./output/eval/program1_1633525022.jsonl"
+                "--targetfile", "./output/eval/good.jsonl",
+                "--evaluationfile", "./output/eval/bad.jsonl"
+            ]
+        },
+        {
+            "name": "Matcher: match <good> <good>",
+            "type": "python",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${cwd}/src/"
+            },
+            "program": "${cwd}/src/matchy/matcher.py",
+            "args": [
+                "match",
+                "--targetfile", "./output/eval/good.jsonl",
+                "--evaluationfile", "./output/eval/good.jsonl"
             ]
         },
         {
