@@ -3,7 +3,37 @@
     // Hover to view descriptions of existing attributes.
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
-    "configurations": [{
+    "configurations": [
+        {
+            "name": "Matcher: collect",
+            "type": "python",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${cwd}/src/"
+            },
+            "program": "${cwd}/src/matchy/matcher.py",
+            "args": [
+                "collect",
+                "--jsoninputpath", "./data/objects/good.json"
+            ]
+        },
+        {
+            "name": "Matcher: match",
+            "type": "python",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${cwd}/src/"
+            },
+            "program": "${cwd}/src/matchy/matcher.py",
+            "args": [
+                "match",
+                "--jsoninputpath", "./data/objects/bad.json",
+                "--evaluationfile", "./output/eval/program1_1633525022.jsonl"
+            ]
+        },
+        {
             "name": "Matcher example 1",
             "type": "python",
             "request": "launch",
@@ -14,7 +44,8 @@
             "program": "${cwd}/src/tracky/matcher.py",
             "args": [
                 "${workspaceFolder}/output/program1_1633357558.jsonl",
-                "${workspaceFolder}/output/program1_1633358012.jsonl"]
+                "${workspaceFolder}/output/program1_1633358012.jsonl"
+            ]
         },
         {
             "name": "Program 1: Good array",
@@ -25,7 +56,9 @@
                 "PYTHONPATH": "${cwd}/src/"
             },
             "program": "${cwd}/src/programs/program1.py",
-            "args": ["${workspaceFolder}/data/arrays/good.json"]
+            "args": [
+                "${workspaceFolder}/data/arrays/good.json"
+            ]
         },
         {
             "name": "Program 1: Bad array",
@@ -36,7 +69,9 @@
                 "PYTHONPATH": "${cwd}/src/"
             },
             "program": "${cwd}/src/programs/program1.py",
-            "args": ["${workspaceFolder}/data/arrays/bad.json"]
+            "args": [
+                "${workspaceFolder}/data/arrays/bad.json"
+            ]
         },
         {
             "name": "Program 1: Good object",
@@ -47,7 +82,9 @@
                 "PYTHONPATH": "${cwd}/src/"
             },
             "program": "${cwd}/src/programs/program1.py",
-            "args": ["${workspaceFolder}/data/objects/good.json"]
+            "args": [
+                "${workspaceFolder}/data/objects/good.json"
+            ]
         },
         {
             "name": "Program 1: Bad object",
@@ -58,7 +95,9 @@
                 "PYTHONPATH": "${cwd}/src/"
             },
             "program": "${cwd}/src/programs/program1.py",
-            "args": ["${workspaceFolder}/data/objects/bad.json"]
+            "args": [
+                "${workspaceFolder}/data/objects/bad.json"
+            ]
         }
     ]
 }
