@@ -12,6 +12,7 @@ class Tracker:
     # output path
     output_directory = './output/'
 
+    @staticmethod
     def track(is_log=True):
         ########################
         # prev_frame: corresponds to the frame that called this method
