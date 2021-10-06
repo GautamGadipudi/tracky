@@ -12,7 +12,7 @@
             "env": {
                 "PYTHONPATH": "${cwd}/src/"
             },
-            "program": "${cwd}/src/detector/detector.py",
+            "program": "${cwd}/src/tracky/detector.py",
             "args": [
                 "collect",
                 "--jsoninputpath", "./data/objects/bad.json"
@@ -26,7 +26,7 @@
             "env": {
                 "PYTHONPATH": "${cwd}/src/"
             },
-            "program": "${cwd}/src/detector/detector.py",
+            "program": "${cwd}/src/tracky/detector.py",
             "args": [
                 "collect",
                 "--jsoninputpath", "./data/objects/good.json"
@@ -40,7 +40,7 @@
             "env": {
                 "PYTHONPATH": "${cwd}/src/"
             },
-            "program": "${cwd}/src/detector/detector.py",
+            "program": "${cwd}/src/tracky/detector.py",
             "args": [
                 "match",
                 "--targetfile", "./output/eval/good.jsonl",
@@ -55,7 +55,7 @@
             "env": {
                 "PYTHONPATH": "${cwd}/src/"
             },
-            "program": "${cwd}/src/detector/detector.py",
+            "program": "${cwd}/src/tracky/detector.py",
             "args": [
                 "match",
                 "--targetfile", "./output/eval/good.jsonl",
