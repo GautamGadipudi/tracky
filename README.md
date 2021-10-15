@@ -15,5 +15,5 @@ python3 detector.py collect --jsoninputpath <filepath>
 ```
 ### Mode `match`
 ```
-python3 detector.py match --evaluationfile <filepath> --targetfile <filepath>
+python3 detector.py match --jsoninputpath <filepath> --targetfile <filepath>
 ```
