@@ -3,6 +3,7 @@ import json
 
 from tracky.data_types import getMyCollection
 
+
 def main(jsoninputpath: str):
     f = open(jsoninputpath)
     user = json.load(f)
@@ -15,6 +16,7 @@ def main(jsoninputpath: str):
     # Operation 2 (__iter__)
     for friend in myUser['friends']:
         print(friend)
+
 
 if __name__ == "__main__":
     main()
