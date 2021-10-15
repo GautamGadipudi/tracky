@@ -4,6 +4,7 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "name": "Matcher: collect bad JSON",
             "type": "python",
@@ -44,7 +45,7 @@
             "args": [
                 "match",
                 "--targetfile", "./output/eval/good.jsonl",
-                "--evaluationfile", "./output/eval/bad.jsonl"
+                "--jsoninputpath", "./data/objects/bad.json"
             ]
         },
         {
@@ -58,8 +59,8 @@
             "program": "${cwd}/src/tracky/detector.py",
             "args": [
                 "match",
-                "--targetfile", "./output/eval/good.jsonl",
-                "--evaluationfile", "./output/eval/good.jsonl"
+                "--jsoninputpath", "./data/objects/good.json",
+                "--targetfile", "./output/eval/good.jsonl"
             ]
         },
         {

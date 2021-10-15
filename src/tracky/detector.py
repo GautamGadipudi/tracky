@@ -1,8 +1,9 @@
 import argparse
 import textwrap
+import json
 
 from programs import program1
-import json
+from tracky.data_types import Tracker
 
 
 def main():
@@ -12,7 +13,10 @@ def main():
     if args.mode == 'collect':
         program1.main(args.jsoninputpath)
     elif args.mode == 'match':
-        eval_traces = get_traces(args.evaluationfile)
+        # eval_traces = get_traces(args.evaluationfile)
+        program1.main(args.jsoninputpath)
+
+        eval_traces = Tracker.frames
         target_traces = get_traces(args.targetfile)
 
         is_match = match_traces(eval_traces, target_traces)
@@ -30,6 +34,8 @@ def get_traces(filename):
 
 
 def match_traces(traces: list, target_traces: list):
+    # pairs = zip(traces, target_traces)
+    # return any(x != y for x, y in pairs)
     return traces == target_traces
 
 
@@ -52,7 +58,8 @@ def get_arg_parser():
     parser_collect.add_argument('--jsoninputpath', required=True, type=str)
 
     parser_match = subparsers.add_parser('match')
-    parser_match.add_argument('--evaluationfile', required=True, type=str)
+    # parser_match.add_argument('--evaluationfile', required=True, type=str)
+    parser_match.add_argument('--jsoninputpath', required=True, type=str)
     parser_match.add_argument('--targetfile', required=True, type=str)
 
     return parser
