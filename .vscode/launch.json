@@ -4,44 +4,30 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-
         {
-            "name": "Matcher: collect bad JSON",
+            "name": "Program 1: collect good JSON",
             "type": "python",
             "request": "launch",
             "console": "integratedTerminal",
             "env": {
                 "PYTHONPATH": "${cwd}/src/"
             },
-            "program": "${cwd}/src/tracky/detector.py",
+            "program": "${cwd}/src/programs/program1.py",
             "args": [
                 "collect",
-                "--jsoninputpath", "./data/objects/bad.json"
+                "--jsoninputpath", "./data/objects/good.json",
+                "--verbose"
             ]
         },
         {
-            "name": "Matcher: collect good JSON",
+            "name": "Program 1: match <bad> <good>",
             "type": "python",
             "request": "launch",
             "console": "integratedTerminal",
             "env": {
                 "PYTHONPATH": "${cwd}/src/"
             },
-            "program": "${cwd}/src/tracky/detector.py",
-            "args": [
-                "collect",
-                "--jsoninputpath", "./data/objects/good.json"
-            ]
-        },
-        {
-            "name": "Matcher: match <bad> <good>",
-            "type": "python",
-            "request": "launch",
-            "console": "integratedTerminal",
-            "env": {
-                "PYTHONPATH": "${cwd}/src/"
-            },
-            "program": "${cwd}/src/tracky/detector.py",
+            "program": "${cwd}/src/programs/program1.py",
             "args": [
                 "match",
                 "--targetfile", "./output/eval/good.jsonl",
@@ -49,71 +35,19 @@
             ]
         },
         {
-            "name": "Matcher: match <good> <good>",
+            "name": "Program 1: match <good> <good>",
             "type": "python",
             "request": "launch",
             "console": "integratedTerminal",
             "env": {
                 "PYTHONPATH": "${cwd}/src/"
             },
-            "program": "${cwd}/src/tracky/detector.py",
+            "program": "${cwd}/src/programs/program1.py",
             "args": [
                 "match",
-                "--jsoninputpath", "./data/objects/good.json",
-                "--targetfile", "./output/eval/good.jsonl"
+                "--targetfile", "./output/eval/good.jsonl",
+                "--jsoninputpath", "./data/objects/good.json"
             ]
         },
-        {
-            "name": "Program 1: Good array",
-            "type": "python",
-            "request": "launch",
-            "console": "integratedTerminal",
-            "env": {
-                "PYTHONPATH": "${cwd}/src/"
-            },
-            "program": "${cwd}/src/programs/program1.py",
-            "args": [
-                "${workspaceFolder}/data/arrays/good.json"
-            ]
-        },
-        {
-            "name": "Program 1: Bad array",
-            "type": "python",
-            "request": "launch",
-            "console": "integratedTerminal",
-            "env": {
-                "PYTHONPATH": "${cwd}/src/"
-            },
-            "program": "${cwd}/src/programs/program1.py",
-            "args": [
-                "${workspaceFolder}/data/arrays/bad.json"
-            ]
-        },
-        {
-            "name": "Program 1: Good object",
-            "type": "python",
-            "request": "launch",
-            "console": "integratedTerminal",
-            "env": {
-                "PYTHONPATH": "${cwd}/src/"
-            },
-            "program": "${cwd}/src/programs/program1.py",
-            "args": [
-                "${workspaceFolder}/data/objects/good.json"
-            ]
-        },
-        {
-            "name": "Program 1: Bad object",
-            "type": "python",
-            "request": "launch",
-            "console": "integratedTerminal",
-            "env": {
-                "PYTHONPATH": "${cwd}/src/"
-            },
-            "program": "${cwd}/src/programs/program1.py",
-            "args": [
-                "${workspaceFolder}/data/objects/bad.json"
-            ]
-        }
     ]
 }
