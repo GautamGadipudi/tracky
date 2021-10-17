@@ -17,3 +17,5 @@ python3 detector.py collect --jsoninputpath <filepath>
 ```
 python3 detector.py match --jsoninputpath <filepath> --targetfile <filepath>
 ```
+
+Use `--verbose` or `-v` to see frame details
