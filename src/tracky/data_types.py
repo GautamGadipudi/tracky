@@ -83,8 +83,8 @@ class MyFloat(float):
     def __new__(cls, *args, **kw):
         return float.__new__(cls, *args, **kw)
 
-
-def getMyCollection(data):
+def getMyCollection(data, args):
+    Tracker.init(args)
     # JSON object
     if type(data) is dict:
         return MyDict(data)
