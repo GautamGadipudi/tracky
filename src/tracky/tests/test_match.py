@@ -48,7 +48,7 @@ def match_good():
 
     # Assertions
     assert tracker.mode == 'match'
-    assert tracker.frame_id == 0
+    assert tracker.frame_id == 2
 
 
 def test():

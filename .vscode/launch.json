@@ -71,7 +71,8 @@
             "args": [
                 "match",
                 "--targetfile", "./output/eval/good.jsonl",
-                "--jsoninputpath", "./data/objects/bad.json"
+                "--jsoninputpath", "./data/objects/bad.json",
+                "-v"
             ]
         },
         {
@@ -86,7 +87,8 @@
             "args": [
                 "match",
                 "--targetfile", "./output/eval/good.jsonl",
-                "--jsoninputpath", "./data/objects/good.json"
+                "--jsoninputpath", "./data/objects/good.json",
+                "-v"
             ]
         },
     ]
