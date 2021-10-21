@@ -5,8 +5,7 @@ from tracky.data_types import getMyCollection
 from util.args import get_arg_parser
 
 def init():
-    parser = get_arg_parser()
-    args = parser.parse_args()
+    args = get_arg_parser(sys.argv[1:])
     f = open(args.jsoninputpath)
     user = json.load(f)
 

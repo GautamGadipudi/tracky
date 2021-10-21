@@ -20,6 +20,8 @@ class Tracker:
 
         if Tracker.mode == 'match':
             Tracker.target_frames = get_traces(args.targetfile)
+        else:
+            Tracker.output_directory = args.outputdirectory
 
         print_tracker_config()
 
@@ -71,6 +73,7 @@ class Tracker:
 
         Tracker.frame_id += 1
 
+
 def get_traces(filename):
     traces = []
     lines = []
@@ -105,3 +108,7 @@ def print_frame(frame_details, print_type='log', prefix='## Tracky Frame'):
                 print(f'''\t\t\t\t\"{expression.strip()}\""''')
     elif print_type == 'log':
         print(prefix, json.dumps(frame_details, indent=1, sort_keys=True))
+
+
+def get_tracker():
+    return Tracker
