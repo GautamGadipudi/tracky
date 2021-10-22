@@ -10,8 +10,8 @@ cryptography==35.0.0
 Cython==0.29.24
 docutils==0.17.1
 geopandas==0.10.2
-grpc_reflection==1.41.0
-grpc_tools==1.0.0
+# grpc_reflection==1.41.0
+# grpc_tools==1.0.0
 importlib_metadata==4.8.1
 ipython==7.28.0
 keyring==23.2.1
