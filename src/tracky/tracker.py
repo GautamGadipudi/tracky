@@ -2,6 +2,7 @@ import inspect
 import json
 from time import time
 import textwrap
+from pathlib import Path
 
 class Tracker:
 
@@ -22,6 +23,7 @@ class Tracker:
             Tracker.target_frames = get_traces(args.targetfile)
         else:
             Tracker.output_directory = args.outputdirectory
+            Path(Tracker.output_directory).mkdir(parents=True, exist_ok=True)
 
         print_tracker_config()
 
