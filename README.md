@@ -1,4 +1,5 @@
 # Silent JSON changes detector
+![example workflow](https://github.com/GautamGadipudi/tracky/actions/workflows/main.yml/badge.svg)
 
 ## Clone the repo.
 ```
