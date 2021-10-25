@@ -13,14 +13,14 @@ def init():
     main(myUser)
 
 def main(myUser):
-    # expects "friends" attribute to be of type myList
+    # expects myUser to be of type myDict
 
     # Operation 1 (__len__)
-    friend_count = len(myUser['friends'])
+    attribute_count = len(myUser)
 
     # Operation 2 (__iter__)
-    for friend in myUser['friends']:
-        print(friend)
+    for k in myUser:
+        print(k, myUser[k])
 
 
 if __name__ == "__main__":

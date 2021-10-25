@@ -1,0 +1,2 @@
+{"previous_frame": {"line_no": 19, "function": "main", "file_name": "/Users/gautamgadipudi/RIT/Fall2021-2022/CSCI-788/mmior/src/programs/program2.py", "module_name": "program2", "code_context": ["attribute_count = len(myUser)"]}, "datatype": "MyDict", "function": "__len__", "frame_id": 0}
+{"previous_frame": {"line_no": 22, "function": "main", "file_name": "/Users/gautamgadipudi/RIT/Fall2021-2022/CSCI-788/mmior/src/programs/program2.py", "module_name": "program2", "code_context": ["for k in myUser:"]}, "datatype": "MyDict", "function": "__iter__", "frame_id": 1}

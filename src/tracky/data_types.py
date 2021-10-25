@@ -26,6 +26,15 @@ class MyDict(dict):
             else:
                 raise Exception(f"Found unknown data type: {type(value)}")
 
+    def __len__(self):
+        Tracker.track()
+        return super().__len__()
+
+    
+    def __iter__(self):
+        Tracker.track()
+        return super().__iter__()
+
 
 class MyList(list):
     def __init__(self, data: list, *arg, **kw):
@@ -77,6 +86,8 @@ class MyStr(str):
 class MyInt(int):
     def __new__(cls, *args, **kw):
         return int.__new__(cls, *args, **kw)
+
+    
 
 
 class MyFloat(float):

@@ -70,7 +70,7 @@
             "program": "${cwd}/src/programs/program1.py",
             "args": [
                 "match",
-                "--targetfile", "./output/eval/good.jsonl",
+                "--targetfile", "./output/eval/p1good.jsonl",
                 "--jsoninputpath", "./data/objects/bad.json",
                 "-v"
             ]
@@ -86,7 +86,56 @@
             "program": "${cwd}/src/programs/program1.py",
             "args": [
                 "match",
-                "--targetfile", "./output/eval/good.jsonl",
+                "--targetfile", "./output/eval/p1good.jsonl",
+                "--jsoninputpath", "./data/objects/good.json",
+                "-v"
+            ]
+        },
+        {
+            "name": "Program 2: collect good JSON",
+            "type": "python",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${cwd}/src/"
+            },
+            "program": "${cwd}/src/programs/program2.py",
+            "args": [
+                "collect",
+                "--jsoninputpath", "./data/objects/good.json",
+                "--verbose",
+                "--outputdirectory",
+                "./output/"
+            ]
+        },
+        {
+            "name": "Program 2: match <bad> <good>",
+            "type": "python",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${cwd}/src/"
+            },
+            "program": "${cwd}/src/programs/program2.py",
+            "args": [
+                "match",
+                "--targetfile", "./output/eval/p2good.jsonl",
+                "--jsoninputpath", "./data/objects/bad.json",
+                "-v"
+            ]
+        },
+        {
+            "name": "Program 2: match <good> <good>",
+            "type": "python",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${cwd}/src/"
+            },
+            "program": "${cwd}/src/programs/program2.py",
+            "args": [
+                "match",
+                "--targetfile", "./output/eval/p2good.jsonl",
                 "--jsoninputpath", "./data/objects/good.json",
                 "-v"
             ]
