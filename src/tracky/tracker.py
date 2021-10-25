@@ -1,89 +1,113 @@
 import inspect
 import json
-from time import time
+import time
 import textwrap
 from pathlib import Path
+import util.io as io
+
 
 class Tracker:
-
-    # output path
-    output_directory = './output/'
-
+    '''
+        Initialize tracker config
+            Set tracker mode
+            Set class level variables
+    '''
     @staticmethod
     def init(args):
         Tracker.mode = args.mode
         Tracker.frame_id = 0
 
         # class level timestamp, used as a tag in output filename
-        Tracker.timestamp = int(time())
+        Tracker.timestamp = time.strftime(
+            '%Y%m%dT%H%M%S%Z', time.localtime(time.time()))
 
         Tracker.verbose = args.verbose
 
         if Tracker.mode == 'match':
-            Tracker.target_frames = get_traces(args.targetfile)
+            Tracker.target_frames = get_metadata_from_file(args.targetfile)
         else:
             Tracker.output_directory = args.outputdirectory
+            Tracker.output_filename = f"{args.outputdirectory}{args.jsoninputpath.split('/')[-1].split('.')[0]}-{Tracker.timestamp}.jsonl"
+
+            # Create nested output directory if not exists
             Path(Tracker.output_directory).mkdir(parents=True, exist_ok=True)
 
         print_tracker_config()
 
+    '''
+        Triggered from overloaded methods
+            Collect frame details
+            Match frame details against target frame
+    '''
     @staticmethod
     def track():
-        ########################
-        # prev_frame: corresponds to the frame that called this method
-        # prev_prev_frame: corresponds to the frame that called the method that we want to track
-        ########################
         prev_frame = inspect.currentframe().f_back
         prev_prev_frame = prev_frame.f_back
 
-        prev_frame_info = inspect.getframeinfo(prev_frame)
-        prev_prev_frame_info = inspect.getframeinfo(prev_prev_frame)
-
-        details = {
-            "previous_frame": {
-                "line_no": prev_prev_frame_info.lineno,
-                "function": prev_prev_frame_info.function,
-                "file_name": prev_prev_frame_info.filename,
-                "module_name": inspect.getmodulename(prev_prev_frame_info.filename),
-                "code_context": list(map(lambda exp: exp.strip(), prev_prev_frame_info.code_context))
-            },
-            "datatype": type(prev_frame.f_locals['self']).__name__,
-            "function": prev_frame_info.function,
-            "frame_id": Tracker.frame_id
-        }
+        metadata = get_frame_metadata(prev_frame, prev_prev_frame)
 
         if Tracker.verbose:
-            print_frame(details, 'info')
+            print("Tracker triggered at frame:")
+            print_frame(metadata, 'info')
 
         if Tracker.mode == 'collect':
-            output_file_name = f'{details["previous_frame"]["module_name"]}_{Tracker.timestamp}.jsonl'
-            output_file_path = f'{Tracker.output_directory}{output_file_name}'
-            with open(f'{output_file_path}', mode='a') as f:
-                data = json.dumps(details)
-                f.write(f'{data}\n')
+            Tracker.collect(metadata)
         elif Tracker.mode == 'match':
-            target_frame = Tracker.target_frames[Tracker.frame_id]
-            if details == target_frame:
-                print(f'## Frame #{Tracker.frame_id} matched.')
-            else:
-                print(f'## Frame #{Tracker.frame_id} mismatched!')
-                print_frame(details, print_type='log', prefix='Got')
-
-
-                print_frame(target_frame, print_type='log', prefix='Expected')
-                raise Exception("Frame mismatched")
+            Tracker.match(metadata)
 
         Tracker.frame_id += 1
 
+    @staticmethod
+    def match(metadata):
+        target_metadata = Tracker.target_frames[Tracker.frame_id]
 
-def get_traces(filename):
-    traces = []
-    lines = []
-    with open(filename, mode='r') as f:
-        lines = f.readlines()
+        is_match = match_frames(metadata, target_metadata)
+        if is_match:
+            print(f'## Frame #{Tracker.frame_id} matched.')
+        else:
+            print(f'## Frame #{Tracker.frame_id} mismatched!')
 
-    traces = [json.loads(line) for line in lines]
-    return traces
+            print('Got')
+            print_frame(metadata, print_type='log')
+
+            print('Expected')
+            print_frame(target_metadata, print_type='log')
+
+            raise Exception("Frame mismatched")
+
+    @staticmethod
+    def collect(metadata):
+        io.append_to_file(Tracker.output_filename, json.dumps(metadata))
+
+
+def match_frames(metadata, target_metadata):
+    return metadata == target_metadata
+
+
+def get_frame_metadata(prev_frame, prev_prev_frame):
+    prev_frame_info = inspect.getframeinfo(prev_frame)
+    prev_prev_frame_info = inspect.getframeinfo(prev_prev_frame)
+
+    metadata = {
+        "previous_frame": {
+            "line_no": prev_prev_frame_info.lineno,
+            "function": prev_prev_frame_info.function,
+            "file_name": prev_prev_frame_info.filename,
+            "module_name": inspect.getmodulename(prev_prev_frame_info.filename),
+            "code_context": list(map(lambda exp: exp.strip(), prev_prev_frame_info.code_context))
+        },
+        "datatype": type(prev_frame.f_locals['self']).__name__,
+        "function": prev_frame_info.function,
+        "frame_id": Tracker.frame_id
+    }
+
+    return metadata
+
+
+def get_metadata_from_file(filename):
+    metadata_list = io.read_metadata(filename)
+
+    return [json.loads(metadata) for metadata in metadata_list]
 
 
 def print_tracker_config():
@@ -94,22 +118,21 @@ def print_tracker_config():
         output directory: \t{Tracker.output_directory} (for collect mode only)
     '''))
 
-def print_frame(frame_details, print_type='log', prefix='## Tracky Frame'):
+
+def print_frame(frame_details, print_type='log'):
     valid_print_types = ['info', 'log']
     if print_type not in valid_print_types:
-        raise ValueError(f'print_frame: arg \"print_type\" must be one of {valid_print_types}')
-    
+        raise ValueError(
+            f'print_frame: arg \"print_type\" must be one of {valid_print_types}')
 
     if print_type == 'info':
-        print(prefix, f'''
-                        {Tracker.frame_id}: module \"{frame_details["previous_frame"]["module_name"]}\" in function \"{frame_details["previous_frame"]["function"]}\" at line {frame_details["previous_frame"]["line_no"]}''')
-        # print(f'''## {prefix} - 
-        #                 {Tracker.frame_id}: module \"{frame_details["previous_frame"]["module_name"]}\" in function \"{frame_details["previous_frame"]["function"]}\" at line {frame_details["previous_frame"]["line_no"]}''')
+        print(
+            f'''{Tracker.frame_id}: \tmodule \"{frame_details["previous_frame"]["module_name"]}\" in function \"{frame_details["previous_frame"]["function"]}\" at line {frame_details["previous_frame"]["line_no"]}''')
 
         for expression in frame_details['previous_frame']['code_context']:
-                print(f'''\t\t\t\t\"{expression.strip()}\""''')
+            print(f'''\t"{expression.strip()}\""''')
     elif print_type == 'log':
-        print(prefix, json.dumps(frame_details, indent=1, sort_keys=True))
+        print(json.dumps(frame_details, indent=1, sort_keys=True))
 
 
 def get_tracker():
