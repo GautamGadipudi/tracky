@@ -22,6 +22,7 @@ class Tracker:
             '%Y%m%dT%H%M%S%Z', time.localtime(time.time()))
 
         Tracker.verbose = args.verbose
+        Tracker.inputfile = args.jsoninputpath
 
         if Tracker.mode == 'match':
             Tracker.target_frames = get_metadata_from_file(args.targetfile)
@@ -111,13 +112,34 @@ def get_metadata_from_file(filename):
 
 
 def print_tracker_config():
-    print(textwrap.dedent(f'''
-    ## Tracky config: 
-        mode: \t\t{Tracker.mode}
-        timestamp: \t\t{Tracker.timestamp} (this is a UUID for files when collecting data)
-        output directory: \t{Tracker.output_directory} (for collect mode only)
-    '''))
+    config = get_tracker_config()
 
+    print(textwrap.dedent(f'''
+        ## Tracky config: 
+            \tmode: \t\t{config['mode']}
+            \ttimestamp: \t{config['timestamp']} (this is a UUID for files when collecting data)
+            \tverbose: \t{config['verbose']}
+            \tinput file: \t{config['inputfile']}'''))
+
+    if config['mode'] == 'collect':
+        print(f'''\toutput file: \t{config['output_file']}''')
+
+    print()
+
+
+def get_tracker_config():
+    config = {
+        'mode': Tracker.mode,
+        'timestamp': Tracker.timestamp,
+        'inputfile': Tracker.inputfile,
+        'verbose': Tracker.verbose
+    }
+
+    if Tracker.mode == 'collect':
+        config['output_file'] = Tracker.output_filename
+
+    return config
+    
 
 def print_frame(frame_details, print_type='log'):
     valid_print_types = ['info', 'log']
