@@ -70,14 +70,13 @@ def test_collect_good(config=[
     tracker = get_tracker()
 
     # Assertions
-    filename = f'program1_{tracker.timestamp}.jsonl'
     assert tracker.mode == 'collect'
-    assert exists(f'{tracker.output_directory}{filename}')
+    assert exists(f'{tracker.output_filename}')
 
     # Move the good data to eval to be used when matching
     try:
         new_filename = f'good.jsonl'
-        os.rename(f'{tracker.output_directory}{filename}', f'{tracker.output_directory}{new_filename}')
+        os.rename(f'{tracker.output_filename}', f'{tracker.output_directory}{new_filename}')
         assert exists(f'{tracker.output_directory}{new_filename}')
     except OSError: 
         pass
