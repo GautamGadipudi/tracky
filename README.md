@@ -12,18 +12,26 @@ git clone https://github.com/GautamGadipudi/tracky.git
 git clone git@github.com:GautamGadipudi/tracky.git
 ```
 
-## Running the code
+## Installation
 
-``` bash
-# change directory
+#### Requirements:
+1. [![Python 3.9.4](https://img.shields.io/badge/python-3.9.4-blue.svg)](https://www.python.org/downloads/release/python-394/)
+
+#### Install dependencies:
+```bash
 cd tracky
 
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+``` bash
 # Make sure you have modules accessible to the interpretter
 export PYTHONPATH="$PYTHONPATH:<your-relative-path-to-repo>/src"
 ```
-
+## Running the code
  
-#### 1. As a CLI
+#### 1. As a CLI:
 
 ```bash
 # see usage and get help
@@ -48,7 +56,7 @@ python3 ./src/programs/program1.py match
 
 Use `-v` or `--verbose` to enable verbose console logging
 
-#### 2. using built-in configurations (scenarios) in VSCode 
+#### 2. Using built-in configurations (scenarios) in VSCode:
 This approach is recommended when debugging.
 
 ```bash
@@ -57,12 +65,12 @@ code .
 ```
 > or just open the cloned repository in a new VSCode window 
 
-1. Open the "Run" tab in VSCode
-(shortcut - <kbd>shift</kbd> + <kbd>⌘</kbd> + <kbd>D</kbd>)
+    1. Open the "Run" tab in VSCode
+    (shortcut - <kbd>shift</kbd> + <kbd>⌘</kbd> + <kbd>D</kbd>)
 
-2. Select a scenario to run from the "RUN" dropdown (typically on the top right corner)
+    2. Select a scenario to run from the "RUN" dropdown (typically on the top right corner)
 
-3. Click the green play button ("Start Debugging" button)
+    3. Click the green play button ("Start Debugging" button)
 
 ## Control flow
-<div align="center"> <img src="./control_flow.jpeg" width="720"></div>
+<div align="center"> <img src="./control_flow.jpeg" width="1200"></div>
