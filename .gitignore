@@ -186,4 +186,7 @@ About
 output/*.jsonl
 output/tests
 
+# Output files
+*.jsonl
+
 Playground
