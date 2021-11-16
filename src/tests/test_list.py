@@ -4,6 +4,7 @@ import pytest
 
 import programs.datatype.list.len.program as p1
 import programs.datatype.list.iter.program as p2
+import programs.datatype.list.clear.program as p3
 
 from tracky.tracker import get_tracker
 from util.setup import init_program
@@ -77,6 +78,33 @@ configs = {
                 "./output/programs/list/iter/good.jsonl"
             ]
         }
+    },
+    "p3": {
+        "collect": {
+            "good": [
+                "collect",
+                "--jsoninputpath",
+                "./data/programs/list/clear/good.json",
+                "--outputdirectory",
+                "./output/programs/list/clear/"
+            ]
+        },
+        "match": {
+            "good": [
+                "match",
+                "--jsoninputpath",
+                "./data/programs/list/clear/good.json",
+                "--targetfile",
+                "./output/programs/list/clear/good.jsonl"
+            ],
+            "bad1": [
+                "match",
+                "--jsoninputpath",
+                "./data/programs/list/clear/bad1.json",
+                "--targetfile",
+                "./output/programs/list/clear/good.jsonl"
+            ]
+        }
     }
 }
 
@@ -85,7 +113,8 @@ configs = {
     "config,program",
     [
         (configs["p1"]['collect']['good'], p1),
-        (configs["p2"]['collect']['good'], p2)
+        (configs["p2"]['collect']['good'], p2),
+        (configs["p3"]['collect']['good'], p3),
     ]
 )
 def test_collect_good(config, program):
@@ -115,6 +144,7 @@ def test_collect_good(config, program):
         (configs["p1"]['match']['bad2'], p1),
         (configs["p2"]['match']['bad1'], p2),
         (configs["p2"]['match']['bad2'], p2),
+        (configs["p3"]['match']['bad1'], p3),
     ]
 )
 def test_match_bad(config, program):
@@ -134,6 +164,7 @@ def test_match_bad(config, program):
     [
         (configs["p1"]['match']['good'], p1),
         (configs["p2"]['match']['good'], p2),
+        (configs["p3"]['match']['good'], p3),
     ]
 )
 def test_match_good(config, program):

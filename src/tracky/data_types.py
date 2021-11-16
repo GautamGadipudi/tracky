@@ -1,4 +1,4 @@
-from tracky.tracker import Tracker
+from tracky.tracker import Tracky
 
 
 class MyDict(dict):
@@ -27,12 +27,16 @@ class MyDict(dict):
                 raise Exception(f"Found unknown data type: {type(value)}")
 
     def __len__(self):
-        Tracker.track()
+        Tracky.track()
         return super().__len__()
 
     def __iter__(self):
-        Tracker.track()
+        Tracky.track()
         return super().__iter__()
+
+    def clear(self):
+        Tracky.track()
+        return super().clear()
 
 
 class MyList(list):
@@ -61,12 +65,16 @@ class MyList(list):
                 raise Exception(f"Found unknown data type: {type(obj)}")
 
     def __len__(self):
-        Tracker.track()
+        Tracky.track()
         return super().__len__()
 
     def __iter__(self):
-        Tracker.track()
+        Tracky.track()
         return super().__iter__()
+
+    def clear(self):
+        Tracky.track()
+        return super().clear()
 
 
 class MyStr(str):
@@ -74,11 +82,11 @@ class MyStr(str):
         return str.__new__(cls, *args, **kw)
 
     def __len__(self):
-        Tracker.track()
+        Tracky.track()
         return super().__len__()
 
     def __iter__(self):
-        Tracker.track()
+        Tracky.track()
         return super().__iter__()
 
 
@@ -93,7 +101,7 @@ class MyFloat(float):
 
 
 def getMyCollection(data, args):
-    Tracker.init(args)
+    Tracky.init(args)
     # JSON object
     if type(data) is dict:
         return MyDict(data)

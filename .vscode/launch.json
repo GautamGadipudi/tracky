@@ -4,7 +4,7 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [{
-            "name": "datatype/list program1 COLLECT <good>",
+            "name": "datatype/list len COLLECT <good>",
             "type": "python",
             "request": "launch",
             "console": "integratedTerminal",
@@ -21,7 +21,7 @@
             ]
         },
         {
-            "name": "datatype/list program1 MATCH <good> <good>",
+            "name": "datatype/list len MATCH <good> <good>",
             "type": "python",
             "request": "launch",
             "console": "integratedTerminal",
@@ -38,7 +38,7 @@
             ]
         },
         {
-            "name": "datatype/list program1 MATCH <good> <bad1>",
+            "name": "datatype/list len MATCH <good> <bad1>",
             "type": "python",
             "request": "launch",
             "console": "integratedTerminal",
@@ -55,7 +55,7 @@
             ]
         },
         {
-            "name": "datatype/list program1 MATCH <good> <bad2>",
+            "name": "datatype/list len MATCH <good> <bad2>",
             "type": "python",
             "request": "launch",
             "console": "integratedTerminal",
@@ -72,7 +72,7 @@
             ]
         },
         {
-            "name": "datatype/list program2 COLLECT <good>",
+            "name": "datatype/list iter COLLECT <good>",
             "type": "python",
             "request": "launch",
             "console": "integratedTerminal",
@@ -89,7 +89,7 @@
             ]
         },
         {
-            "name": "datatype/list program2 MATCH <good> <good>",
+            "name": "datatype/list iter MATCH <good> <good>",
             "type": "python",
             "request": "launch",
             "console": "integratedTerminal",
@@ -106,7 +106,7 @@
             ]
         },
         {
-            "name": "datatype/list program2 MATCH <good> <bad1>",
+            "name": "datatype/list iter MATCH <good> <bad1>",
             "type": "python",
             "request": "launch",
             "console": "integratedTerminal",
@@ -123,7 +123,7 @@
             ]
         },
         {
-            "name": "datatype/list program2 MATCH <good> <bad2>",
+            "name": "datatype/list iter MATCH <good> <bad2>",
             "type": "python",
             "request": "launch",
             "console": "integratedTerminal",
@@ -148,6 +148,57 @@
                 "PYTHONPATH": "${cwd}/src/"
             },
             "program": "${cwd}/src/tests/test_list.py"
+        },
+        {
+            "name": "datatype/dict clear COLLECT <good>",
+            "type": "python",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${cwd}/src/"
+            },
+            "program": "${cwd}/src/programs/datatype/dict/clear/program.py",
+            "args": [
+                "collect",
+                "--jsoninputpath",
+                "./data/programs/dict/clear/good.json",
+                "--outputdirectory",
+                "./output/programs/dict/clear/"
+            ]
+        },
+        {
+            "name": "datatype/dict clear MATCH <good> <good>",
+            "type": "python",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${cwd}/src/"
+            },
+            "program": "${cwd}/src/programs/datatype/dict/clear/program.py",
+            "args": [
+                "match",
+                "--jsoninputpath",
+                "./data/programs/dict/clear/good.json",
+                "--targetfile",
+                "./output/programs/dict/clear/good.jsonl"
+            ]
+        },
+        {
+            "name": "datatype/dict clear MATCH <good> <bad1>",
+            "type": "python",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${cwd}/src/"
+            },
+            "program": "${cwd}/src/programs/datatype/dict/clear/program.py",
+            "args": [
+                "match",
+                "--jsoninputpath",
+                "./data/programs/dict/clear/bad1.json",
+                "--targetfile",
+                "./output/programs/dict/clear/good.jsonl"
+            ]
         },
     ]
 }

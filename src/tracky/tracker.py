@@ -6,7 +6,7 @@ from pathlib import Path
 import util.io as io
 
 
-class Tracker:
+class Tracky:
     '''
         Initialize tracker config
             Set tracker mode
@@ -14,24 +14,24 @@ class Tracker:
     '''
     @staticmethod
     def init(args):
-        Tracker.mode = args.mode
-        Tracker.frame_id = 0
+        Tracky.mode = args.mode
+        Tracky.frame_id = 0
 
         # class level timestamp, used as a tag in output filename
-        Tracker.timestamp = time.strftime(
+        Tracky.timestamp = time.strftime(
             '%Y%m%dT%H%M%S%Z', time.localtime(time.time()))
 
-        Tracker.verbose = args.verbose
-        Tracker.inputfile = args.jsoninputpath
+        Tracky.verbose = args.verbose
+        Tracky.inputfile = args.jsoninputpath
 
-        if Tracker.mode == 'match':
-            Tracker.target_frames = get_metadata_from_file(args.targetfile)
+        if Tracky.mode == 'match':
+            Tracky.target_frames = get_metadata_from_file(args.targetfile)
         else:
-            Tracker.output_directory = args.outputdirectory
-            Tracker.output_filename = f"{args.outputdirectory}{args.jsoninputpath.split('/')[-1].split('.')[0]}-{Tracker.timestamp}.jsonl"
+            Tracky.output_directory = args.outputdirectory
+            Tracky.output_filename = f"{args.outputdirectory}{args.jsoninputpath.split('/')[-1].split('.')[0]}-{Tracky.timestamp}.jsonl"
 
             # Create nested output directory if not exists
-            Path(Tracker.output_directory).mkdir(parents=True, exist_ok=True)
+            Path(Tracky.output_directory).mkdir(parents=True, exist_ok=True)
 
         print_tracker_config()
 
@@ -47,26 +47,26 @@ class Tracker:
 
         metadata = get_frame_metadata(prev_frame, prev_prev_frame)
 
-        if Tracker.verbose:
+        if Tracky.verbose:
             print("Tracker triggered at frame:")
             print_frame(metadata, 'info')
 
-        if Tracker.mode == 'collect':
-            Tracker.collect(metadata)
-        elif Tracker.mode == 'match':
-            Tracker.match(metadata)
+        if Tracky.mode == 'collect':
+            Tracky.collect(metadata)
+        elif Tracky.mode == 'match':
+            Tracky.match(metadata)
 
-        Tracker.frame_id += 1
+        Tracky.frame_id += 1
 
     @staticmethod
     def match(metadata):
-        target_metadata = Tracker.target_frames[Tracker.frame_id]
+        target_metadata = Tracky.target_frames[Tracky.frame_id]
 
         is_match = match_frames(metadata, target_metadata)
         if is_match:
-            print(f'## Frame #{Tracker.frame_id} matched.')
+            print(f'## Frame #{Tracky.frame_id} matched.')
         else:
-            print(f'## Frame #{Tracker.frame_id} mismatched!')
+            print(f'## Frame #{Tracky.frame_id} mismatched!')
 
             print('Got')
             print_frame(metadata, print_type='log')
@@ -78,7 +78,7 @@ class Tracker:
 
     @staticmethod
     def collect(metadata):
-        io.append_to_file(Tracker.output_filename, json.dumps(metadata))
+        io.append_to_file(Tracky.output_filename, json.dumps(metadata))
 
 
 def match_frames(metadata, target_metadata):
@@ -99,7 +99,7 @@ def get_frame_metadata(prev_frame, prev_prev_frame):
         },
         "datatype": type(prev_frame.f_locals['self']).__name__,
         "function": prev_frame_info.function,
-        "frame_id": Tracker.frame_id
+        "frame_id": Tracky.frame_id
     }
 
     return metadata
@@ -129,14 +129,14 @@ def print_tracker_config():
 
 def get_tracker_config():
     config = {
-        'mode': Tracker.mode,
-        'timestamp': Tracker.timestamp,
-        'inputfile': Tracker.inputfile,
-        'verbose': Tracker.verbose
+        'mode': Tracky.mode,
+        'timestamp': Tracky.timestamp,
+        'inputfile': Tracky.inputfile,
+        'verbose': Tracky.verbose
     }
 
-    if Tracker.mode == 'collect':
-        config['output_file'] = Tracker.output_filename
+    if Tracky.mode == 'collect':
+        config['output_file'] = Tracky.output_filename
 
     return config
 
@@ -149,7 +149,7 @@ def print_frame(frame_details, print_type='log'):
 
     if print_type == 'info':
         print(
-            f'''{Tracker.frame_id}: \tmodule \"{frame_details["previous_frame"]["module_name"]}\" in function \"{frame_details["previous_frame"]["function"]}\" at line {frame_details["previous_frame"]["line_no"]}''')
+            f'''{Tracky.frame_id}: \tmodule \"{frame_details["previous_frame"]["module_name"]}\" in function \"{frame_details["previous_frame"]["function"]}\" at line {frame_details["previous_frame"]["line_no"]}''')
 
         for expression in frame_details['previous_frame']['code_context']:
             print(f'''\t"{expression.strip()}\""''')
@@ -158,4 +158,4 @@ def print_frame(frame_details, print_type='log'):
 
 
 def get_tracker():
-    return Tracker
+    return Tracky
