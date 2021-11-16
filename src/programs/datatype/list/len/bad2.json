@@ -1,9 +1,0 @@
-{
-    "some_list": {
-        "attr1": "some attr1",
-        "attr2": "some attr2",
-        "attr3": [
-            1, 2, 3
-        ]
-    }
-}

@@ -184,7 +184,8 @@ About
 
 # Tracking / logging output files
 output/*.jsonl
-output/tests
+
+output/
 
 # Output files
 *.jsonl
