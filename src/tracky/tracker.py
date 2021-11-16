@@ -139,7 +139,7 @@ def get_tracker_config():
         config['output_file'] = Tracker.output_filename
 
     return config
-    
+
 
 def print_frame(frame_details, print_type='log'):
     valid_print_types = ['info', 'log']

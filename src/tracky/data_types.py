@@ -30,7 +30,6 @@ class MyDict(dict):
         Tracker.track()
         return super().__len__()
 
-    
     def __iter__(self):
         Tracker.track()
         return super().__iter__()
@@ -87,12 +86,11 @@ class MyInt(int):
     def __new__(cls, *args, **kw):
         return int.__new__(cls, *args, **kw)
 
-    
-
 
 class MyFloat(float):
     def __new__(cls, *args, **kw):
         return float.__new__(cls, *args, **kw)
+
 
 def getMyCollection(data, args):
     Tracker.init(args)

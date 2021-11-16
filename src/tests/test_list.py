@@ -1,22 +1,12 @@
+import os
+from os.path import exists
+import pytest
 
 import programs.datatype.list.len.program as p1
 import programs.datatype.list.iter.program as p2
 
 from tracky.tracker import get_tracker
-import os
-from os.path import exists
-import json
-from util.args import get_arg_parser
-from tracky.data_types import getMyCollection
-import pytest
-
-
-def init(config):
-    args = get_arg_parser(config)
-    f = open(args.jsoninputpath)
-    user = json.load(f)
-    myUser = getMyCollection(user, args)
-    return myUser
+from util.setup import init_program
 
 
 configs = {
@@ -90,6 +80,7 @@ configs = {
     }
 }
 
+
 @pytest.mark.parametrize(
     "config,program",
     [
@@ -98,7 +89,7 @@ configs = {
     ]
 )
 def test_collect_good(config, program):
-    myUser = init(config)
+    myUser = init_program(config)
     program.main(myUser)
 
     tracker = get_tracker()
@@ -112,7 +103,7 @@ def test_collect_good(config, program):
         new_filename = f'good.jsonl'
         os.rename(f'{tracker.output_filename}',
                   f'{tracker.output_directory}{new_filename}')
-        assert exists(f'{tracker.output_directory}{new_filename}')
+        assert os.path.exists(f'{tracker.output_directory}{new_filename}')
     except OSError:
         pass
 
@@ -128,7 +119,7 @@ def test_collect_good(config, program):
 )
 def test_match_bad(config, program):
 
-    myUser = init(config)
+    myUser = init_program(config)
     with pytest.raises(Exception) as e:
         program.main(myUser)
 
@@ -136,6 +127,7 @@ def test_match_bad(config, program):
 
     # Assertions
     assert tracker.mode == 'match'
+
 
 @pytest.mark.parametrize(
     "config,program",
@@ -146,7 +138,7 @@ def test_match_bad(config, program):
 )
 def test_match_good(config, program):
 
-    myUser = init(config)
+    myUser = init_program(config)
     program.main(myUser)
 
     tracker = get_tracker()
