@@ -3,153 +3,15 @@
     // Hover to view descriptions of existing attributes.
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
-    "configurations": [
-
-
-    {
-            "name": "Test collect",
+    "configurations": [{
+            "name": "datatype/list program1 COLLECT <good>",
             "type": "python",
             "request": "launch",
             "console": "integratedTerminal",
             "env": {
                 "PYTHONPATH": "${cwd}/src/"
             },
-            "program": "${cwd}/src/tracky/tests/test_collect.py"
-        },
-        {
-            "name": "Test match",
-            "type": "python",
-            "request": "launch",
-            "console": "integratedTerminal",
-            "env": {
-                "PYTHONPATH": "${cwd}/src/"
-            },
-            "program": "${cwd}/src/tracky/tests/test_match.py"
-        },
-        {
-            "name": "Program 1: collect good JSON",
-            "type": "python",
-            "request": "launch",
-            "console": "integratedTerminal",
-            "env": {
-                "PYTHONPATH": "${cwd}/src/"
-            },
-            "program": "${cwd}/src/programs/program1.py",
-            "args": [
-                "collect",
-                "--jsoninputpath", "./data/objects/good.json",
-                "--verbose",
-                "--outputdirectory",
-                "./output/"
-            ]
-        },
-        {
-            "name": "Program 1: collect bad JSON",
-            "type": "python",
-            "request": "launch",
-            "console": "integratedTerminal",
-            "env": {
-                "PYTHONPATH": "${cwd}/src/"
-            },
-            "program": "${cwd}/src/programs/program1.py",
-            "args": [
-                "collect",
-                "--jsoninputpath", "./data/objects/bad.json",
-                "--verbose",
-                "--outputdirectory",
-                "./output/"
-            ]
-        },
-        {
-            "name": "Program 1: match <bad> <good>",
-            "type": "python",
-            "request": "launch",
-            "console": "integratedTerminal",
-            "env": {
-                "PYTHONPATH": "${cwd}/src/"
-            },
-            "program": "${cwd}/src/programs/program1.py",
-            "args": [
-                "match",
-                "--targetfile", "./output/eval/p1good.jsonl",
-                "--jsoninputpath", "./data/objects/bad.json",
-                "-v"
-            ]
-        },
-        {
-            "name": "Program 1: match <good> <good>",
-            "type": "python",
-            "request": "launch",
-            "console": "integratedTerminal",
-            "env": {
-                "PYTHONPATH": "${cwd}/src/"
-            },
-            "program": "${cwd}/src/programs/program1.py",
-            "args": [
-                "match",
-                "--targetfile", "./output/eval/p1good.jsonl",
-                "--jsoninputpath", "./data/objects/good.json",
-                "-v"
-            ]
-        },
-        {
-            "name": "Program 2: collect good JSON",
-            "type": "python",
-            "request": "launch",
-            "console": "integratedTerminal",
-            "env": {
-                "PYTHONPATH": "${cwd}/src/"
-            },
-            "program": "${cwd}/src/programs/program2.py",
-            "args": [
-                "collect",
-                "--jsoninputpath", "./data/objects/good.json",
-                "--verbose",
-                "--outputdirectory",
-                "./output/"
-            ]
-        },
-        {
-            "name": "Program 2: match <bad> <good>",
-            "type": "python",
-            "request": "launch",
-            "console": "integratedTerminal",
-            "env": {
-                "PYTHONPATH": "${cwd}/src/"
-            },
-            "program": "${cwd}/src/programs/program2.py",
-            "args": [
-                "match",
-                "--targetfile", "./output/eval/p2good.jsonl",
-                "--jsoninputpath", "./data/objects/bad.json",
-                "-v"
-            ]
-        },
-        {
-            "name": "Program 2: match <good> <good>",
-            "type": "python",
-            "request": "launch",
-            "console": "integratedTerminal",
-            "env": {
-                "PYTHONPATH": "${cwd}/src/"
-            },
-            "program": "${cwd}/src/programs/program2.py",
-            "args": [
-                "match",
-                "--targetfile", "./output/eval/p2good.jsonl",
-                "--jsoninputpath", "./data/objects/good.json",
-                "-v"
-            ]
-        },
-        {
-            "name": "datatype/list program1 collect <good>",
-            "type": "python",
-            "request": "launch",
-            "console": "integratedTerminal",
-            "env": {
-                "PYTHONPATH": "${cwd}/src/"
-            },
-            "program": "${cwd}/src/programs/datatype/list/program1/program1.py",
+            "program": "${cwd}/src/programs/datatype/list/program1/program.py",
             "args": [
                 "collect",
                 "--jsoninputpath", "${cwd}/src/programs/datatype/list/program1/good.json",
@@ -158,14 +20,14 @@
             ]
         },
         {
-            "name": "datatype/list program1 match <good> <good>",
+            "name": "datatype/list program1 MATCH <good> <good>",
             "type": "python",
             "request": "launch",
             "console": "integratedTerminal",
             "env": {
                 "PYTHONPATH": "${cwd}/src/"
             },
-            "program": "${cwd}/src/programs/datatype/list/program1/program1.py",
+            "program": "${cwd}/src/programs/datatype/list/program1/program.py",
             "args": [
                 "match",
                 "--jsoninputpath", "${cwd}/src/programs/datatype/list/program1/good.json",
@@ -174,14 +36,14 @@
             ]
         },
         {
-            "name": "datatype/list program1 match <good> <bad1>",
+            "name": "datatype/list program1 MATCH <good> <bad1>",
             "type": "python",
             "request": "launch",
             "console": "integratedTerminal",
             "env": {
                 "PYTHONPATH": "${cwd}/src/"
             },
-            "program": "${cwd}/src/programs/datatype/list/program1/program1.py",
+            "program": "${cwd}/src/programs/datatype/list/program1/program.py",
             "args": [
                 "match",
                 "--jsoninputpath", "${cwd}/src/programs/datatype/list/program1/bad1.json",
@@ -190,18 +52,82 @@
             ]
         },
         {
-            "name": "datatype/list program1 match <good> <bad2>",
+            "name": "datatype/list program1 MATCH <good> <bad2>",
             "type": "python",
             "request": "launch",
             "console": "integratedTerminal",
             "env": {
                 "PYTHONPATH": "${cwd}/src/"
             },
-            "program": "${cwd}/src/programs/datatype/list/program1/program1.py",
+            "program": "${cwd}/src/programs/datatype/list/program1/program.py",
             "args": [
                 "match",
                 "--jsoninputpath", "${cwd}/src/programs/datatype/list/program1/bad2.json",
                 "--targetfile", "${cwd}/src/programs/datatype/list/program1/good-20211115T184534EST.jsonl",
+                "-v"
+            ]
+        },
+        {
+            "name": "datatype/list program2 COLLECT <good>",
+            "type": "python",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${cwd}/src/"
+            },
+            "program": "${cwd}/src/programs/datatype/list/program2/program.py",
+            "args": [
+                "collect",
+                "--jsoninputpath", "${cwd}/src/programs/datatype/list/program2/good.json",
+                "--outputdirectory", "${cwd}/src/programs/datatype/list/program2/",
+                "-v"
+            ]
+        },
+        {
+            "name": "datatype/list program2 MATCH <good> <good>",
+            "type": "python",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${cwd}/src/"
+            },
+            "program": "${cwd}/src/programs/datatype/list/program2/program.py",
+            "args": [
+                "match",
+                "--jsoninputpath", "${cwd}/src/programs/datatype/list/program2/good.json",
+                "--targetfile", "${cwd}/src/programs/datatype/list/program2/good-20211115T190112EST.jsonl",
+                "-v"
+            ]
+        },
+        {
+            "name": "datatype/list program2 MATCH <good> <bad1>",
+            "type": "python",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${cwd}/src/"
+            },
+            "program": "${cwd}/src/programs/datatype/list/program2/program.py",
+            "args": [
+                "match",
+                "--jsoninputpath", "${cwd}/src/programs/datatype/list/program2/bad1.json",
+                "--targetfile", "${cwd}/src/programs/datatype/list/program2/good-20211115T190112EST.jsonl",
+                "-v"
+            ]
+        },
+        {
+            "name": "datatype/list program2 MATCH <good> <bad2>",
+            "type": "python",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${cwd}/src/"
+            },
+            "program": "${cwd}/src/programs/datatype/list/program2/program.py",
+            "args": [
+                "MATCH",
+                "--jsoninputpath", "${cwd}/src/programs/datatype/list/program2/bad2.json",
+                "--targetfile", "${cwd}/src/programs/datatype/list/program2/good-20211115T190112EST.jsonl",
                 "-v"
             ]
         },

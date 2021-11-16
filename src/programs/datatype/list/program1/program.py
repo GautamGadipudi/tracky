@@ -13,8 +13,7 @@ def init():
     main(myUser)
 
 def main(myUser):
-    # expects "friends" attribute to be of type myList
-
+    # Expects "some_list" to be of type list
     # Operation (__len__)
     list_count = len(myUser['some_list'])
 
