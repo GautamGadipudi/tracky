@@ -11,12 +11,13 @@
             "env": {
                 "PYTHONPATH": "${cwd}/src/"
             },
-            "program": "${cwd}/src/programs/datatype/list/program1/program.py",
+            "program": "${cwd}/src/programs/datatype/list/len/program.py",
             "args": [
                 "collect",
-                "--jsoninputpath", "${cwd}/src/programs/datatype/list/program1/good.json",
-                "--outputdirectory", "${cwd}/src/programs/datatype/list/program1/",
-                "-v"
+                "--jsoninputpath",
+                "./data/programs/list/len/good.json",
+                "--outputdirectory",
+                "./output/programs/list/len/"
             ]
         },
         {
@@ -27,12 +28,13 @@
             "env": {
                 "PYTHONPATH": "${cwd}/src/"
             },
-            "program": "${cwd}/src/programs/datatype/list/program1/program.py",
+            "program": "${cwd}/src/programs/datatype/list/len/program.py",
             "args": [
                 "match",
-                "--jsoninputpath", "${cwd}/src/programs/datatype/list/program1/good.json",
-                "--targetfile", "${cwd}/src/programs/datatype/list/program1/good-20211115T184534EST.jsonl",
-                "-v"
+                "--jsoninputpath",
+                "./data/programs/list/len/good.json",
+                "--targetfile",
+                "./output/programs/list/len/good.jsonl"
             ]
         },
         {
@@ -43,12 +45,13 @@
             "env": {
                 "PYTHONPATH": "${cwd}/src/"
             },
-            "program": "${cwd}/src/programs/datatype/list/program1/program.py",
+            "program": "${cwd}/src/programs/datatype/list/len/program.py",
             "args": [
                 "match",
-                "--jsoninputpath", "${cwd}/src/programs/datatype/list/program1/bad1.json",
-                "--targetfile", "${cwd}/src/programs/datatype/list/program1/good-20211115T184534EST.jsonl",
-                "-v"
+                "--jsoninputpath",
+                "./data/programs/list/len/bad1.json",
+                "--targetfile",
+                "./output/programs/list/len/good.jsonl"
             ]
         },
         {
@@ -59,12 +62,13 @@
             "env": {
                 "PYTHONPATH": "${cwd}/src/"
             },
-            "program": "${cwd}/src/programs/datatype/list/program1/program.py",
+            "program": "${cwd}/src/programs/datatype/list/len/program.py",
             "args": [
                 "match",
-                "--jsoninputpath", "${cwd}/src/programs/datatype/list/program1/bad2.json",
-                "--targetfile", "${cwd}/src/programs/datatype/list/program1/good-20211115T184534EST.jsonl",
-                "-v"
+                "--jsoninputpath",
+                "./data/programs/list/len/bad2.json",
+                "--targetfile",
+                "./output/programs/list/len/good.jsonl"
             ]
         },
         {
@@ -75,12 +79,13 @@
             "env": {
                 "PYTHONPATH": "${cwd}/src/"
             },
-            "program": "${cwd}/src/programs/datatype/list/program2/program.py",
+            "program": "${cwd}/src/programs/datatype/list/iter/program.py",
             "args": [
                 "collect",
-                "--jsoninputpath", "${cwd}/src/programs/datatype/list/program2/good.json",
-                "--outputdirectory", "${cwd}/src/programs/datatype/list/program2/",
-                "-v"
+                "--jsoninputpath",
+                "./data/programs/list/iter/good.json",
+                "--outputdirectory",
+                "./output/programs/list/iter/"
             ]
         },
         {
@@ -91,12 +96,13 @@
             "env": {
                 "PYTHONPATH": "${cwd}/src/"
             },
-            "program": "${cwd}/src/programs/datatype/list/program2/program.py",
+            "program": "${cwd}/src/programs/datatype/list/iter/program.py",
             "args": [
                 "match",
-                "--jsoninputpath", "${cwd}/src/programs/datatype/list/program2/good.json",
-                "--targetfile", "${cwd}/src/programs/datatype/list/program2/good-20211115T190112EST.jsonl",
-                "-v"
+                "--jsoninputpath",
+                "./data/programs/list/iter/good.json",
+                "--targetfile",
+                "./output/programs/list/iter/good.jsonl"
             ]
         },
         {
@@ -107,12 +113,13 @@
             "env": {
                 "PYTHONPATH": "${cwd}/src/"
             },
-            "program": "${cwd}/src/programs/datatype/list/program2/program.py",
+            "program": "${cwd}/src/programs/datatype/list/iter/program.py",
             "args": [
                 "match",
-                "--jsoninputpath", "${cwd}/src/programs/datatype/list/program2/bad1.json",
-                "--targetfile", "${cwd}/src/programs/datatype/list/program2/good-20211115T190112EST.jsonl",
-                "-v"
+                "--jsoninputpath",
+                "./data/programs/list/iter/bad1.json",
+                "--targetfile",
+                "./output/programs/list/iter/good.jsonl"
             ]
         },
         {
@@ -123,13 +130,24 @@
             "env": {
                 "PYTHONPATH": "${cwd}/src/"
             },
-            "program": "${cwd}/src/programs/datatype/list/program2/program.py",
+            "program": "${cwd}/src/programs/datatype/list/iter/program.py",
             "args": [
-                "MATCH",
-                "--jsoninputpath", "${cwd}/src/programs/datatype/list/program2/bad2.json",
-                "--targetfile", "${cwd}/src/programs/datatype/list/program2/good-20211115T190112EST.jsonl",
-                "-v"
+                "match",
+                "--jsoninputpath",
+                "./data/programs/list/iter/bad2.json",
+                "--targetfile",
+                "./output/programs/list/iter/good.jsonl"
             ]
+        },
+        {
+            "name": "test",
+            "type": "python",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${cwd}/src/"
+            },
+            "program": "${cwd}/src/tests/test_list.py"
         },
     ]
 }

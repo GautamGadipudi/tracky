@@ -34,7 +34,6 @@ def test_match_bad(config=[
 
     # Assertions
     assert tracker.mode == 'match'
-    # assert pytest.raises(Exception)
     assert tracker.frame_id == 0
 
 
