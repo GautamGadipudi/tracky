@@ -9,100 +9,105 @@ import programs.datatype.dict.clear.program as p3
 from tracky.tracker import get_tracker
 from util.setup import init_program
 
+data_dir = "./data/programs/dict"
+output_dir = "./output/programs/dict"
 
 configs = {
     "p1": {
+        "program": p1,
         "collect": {
             "good": [
                 "collect",
                 "--jsoninputpath",
-                "./data/programs/dict/len/good.json",
+                f"{data_dir}/len/good.json",
                 "--outputdirectory",
-                "./output/programs/dict/len/"
+                f"{output_dir}/len/"
             ]
         },
         "match": {
             "good": [
                 "match",
                 "--jsoninputpath",
-                "./data/programs/dict/len/good.json",
+                f"{data_dir}/len/good.json",
                 "--targetfile",
-                "./output/programs/dict/len/good.jsonl"
+                f"{output_dir}/len/good.jsonl"
             ],
             "bad1": [
                 "match",
                 "--jsoninputpath",
-                "./data/programs/dict/len/bad1.json",
+                f"{data_dir}/len/bad1.json",
                 "--targetfile",
-                "./output/programs/dict/len/good.jsonl"
+                f"{output_dir}/len/good.jsonl"
             ],
             "bad2": [
                 "match",
                 "--jsoninputpath",
-                "./data/programs/dict/len/bad2.json",
+                f"{data_dir}/len/bad2.json",
                 "--targetfile",
-                "./output/programs/dict/len/good.jsonl"
+                f"{output_dir}/len/good.jsonl"
             ]
         }
     },
     "p2": {
+        "program": p2,
         "collect": {
             "good": [
                 "collect",
                 "--jsoninputpath",
-                "./data/programs/dict/iter/good.json",
+                f"{data_dir}/iter/good.json",
                 "--outputdirectory",
-                "./output/programs/dict/iter/"
+                f"{output_dir}/iter/"
             ]
         },
         "match": {
             "good": [
                 "match",
                 "--jsoninputpath",
-                "./data/programs/dict/iter/good.json",
+                f"{data_dir}/iter/good.json",
                 "--targetfile",
-                "./output/programs/dict/iter/good.jsonl"
+                f"{output_dir}/iter/good.jsonl"
             ],
             "bad1": [
                 "match",
                 "--jsoninputpath",
-                "./data/programs/dict/iter/bad1.json",
+                f"{data_dir}/iter/bad1.json",
                 "--targetfile",
-                "./output/programs/dict/iter/good.jsonl"
+                f"{output_dir}/iter/good.jsonl"
             ],
             "bad2": [
                 "match",
                 "--jsoninputpath",
-                "./data/programs/dict/iter/bad2.json",
+                f"{data_dir}/iter/bad2.json",
                 "--targetfile",
-                "./output/programs/dict/iter/good.jsonl"
+                f"{output_dir}/iter/good.jsonl"
             ]
         }
     },
     "p3": {
+        "program": p3,
         "collect": {
             "good": [
                 "collect",
                 "--jsoninputpath",
-                "./data/programs/dict/clear/good.json",
+                f"{data_dir}/clear/good.json",
                 "--outputdirectory",
-                "./output/programs/dict/clear/"
+                f"{output_dir}/clear/"
             ]
         },
         "match": {
             "good": [
                 "match",
                 "--jsoninputpath",
-                "./data/programs/dict/clear/good.json",
+                f"{data_dir}/clear/good.json",
                 "--targetfile",
-                "./output/programs/dict/clear/good.jsonl"
+                f"{output_dir}/clear/good.jsonl"
             ],
             "bad1": [
                 "match",
                 "--jsoninputpath",
-                "./data/programs/dict/clear/bad1.json",
+                f"{data_dir}/clear/bad1.json",
                 "--targetfile",
-                "./output/programs/dict/clear/good.jsonl"
+                f"{output_dir}/clear/good.jsonl"
             ]
         }
     }

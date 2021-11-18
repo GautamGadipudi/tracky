@@ -8,73 +8,77 @@ import programs.datatype.str.iter.program as p2
 from tracky.tracker import get_tracker
 from util.setup import init_program
 
+data_dir = "./data/programs/str"
+output_dir = "./output/programs/str"
 
 configs = {
     "p1": {
+        "program": p1,
         "collect": {
             "good": [
                 "collect",
                 "--jsoninputpath",
-                "./data/programs/str/len/good.json",
+                f"{data_dir}/len/good.json",
                 "--outputdirectory",
-                "./output/programs/str/len/"
+                f"{output_dir}/len/"
             ]
         },
         "match": {
             "good": [
                 "match",
                 "--jsoninputpath",
-                "./data/programs/str/len/good.json",
+                f"{data_dir}/len/good.json",
                 "--targetfile",
-                "./output/programs/str/len/good.jsonl"
+                f"{output_dir}/len/good.jsonl"
             ],
             "bad1": [
                 "match",
                 "--jsoninputpath",
-                "./data/programs/str/len/bad1.json",
+                f"{data_dir}/len/bad1.json",
                 "--targetfile",
-                "./output/programs/str/len/good.jsonl"
+                f"{output_dir}/len/good.jsonl"
             ],
             "bad2": [
                 "match",
                 "--jsoninputpath",
-                "./data/programs/str/len/bad2.json",
+                f"{data_dir}/len/bad2.json",
                 "--targetfile",
-                "./output/programs/str/len/good.jsonl"
+                f"{output_dir}/len/good.jsonl"
             ]
         }
     },
     "p2": {
+        "program": p2,
         "collect": {
             "good": [
                 "collect",
                 "--jsoninputpath",
-                "./data/programs/str/iter/good.json",
+                f"{data_dir}/iter/good.json",
                 "--outputdirectory",
-                "./output/programs/str/iter/"
+                f"{output_dir}/iter/"
             ]
         },
         "match": {
             "good": [
                 "match",
                 "--jsoninputpath",
-                "./data/programs/str/iter/good.json",
+                f"{data_dir}/iter/good.json",
                 "--targetfile",
-                "./output/programs/str/iter/good.jsonl"
+                f"{output_dir}/iter/good.jsonl"
             ],
             "bad1": [
                 "match",
                 "--jsoninputpath",
-                "./data/programs/str/iter/bad1.json",
+                f"{data_dir}/iter/bad1.json",
                 "--targetfile",
-                "./output/programs/str/iter/good.jsonl"
+                f"{output_dir}/iter/good.jsonl"
             ],
             "bad2": [
                 "match",
                 "--jsoninputpath",
-                "./data/programs/str/iter/bad2.json",
+                f"{data_dir}/iter/bad2.json",
                 "--targetfile",
-                "./output/programs/str/iter/good.jsonl"
+                f"{output_dir}/iter/good.jsonl"
             ]
         }
     }
