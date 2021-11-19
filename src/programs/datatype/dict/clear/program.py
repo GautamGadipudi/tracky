@@ -7,6 +7,9 @@ def main(myUser):
     myUser['some_dict'].clear()
 
 
-if __name__ == "__main__":
-    myUser = init_program(sys.argv[1:])
+def init(config):
+    myUser = init_program(config)
     main(myUser)
+
+if __name__ == "__main__":
+    init(sys.argv[1:])

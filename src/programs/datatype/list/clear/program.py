@@ -7,7 +7,10 @@ def main(myUser):
     # Expects "some_list" to be of type list
     myUser['some_list'].clear()
 
+def init(config):
+    myUser = init_program(config)
+    main(myUser)
+
 
 if __name__ == "__main__":
-    myUser = init_program(sys.argv[1:])
-    main(myUser)
+    init(sys.argv[1:])

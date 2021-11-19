@@ -8,8 +8,11 @@ def main(myUser):
     # Expects "some_list" to be of type list
     for k in myUser['some_dict']:
         print(k)
+        
+def init(config):
+    myUser = init_program(config)
+    main(myUser)
 
 
 if __name__ == "__main__":
-    myUser = init_program(sys.argv[1:])
-    main(myUser)
+    init(sys.argv[1:])

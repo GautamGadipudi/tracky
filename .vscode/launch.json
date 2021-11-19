@@ -147,7 +147,7 @@
             "env": {
                 "PYTHONPATH": "${cwd}/src/"
             },
-            "program": "${cwd}/src/tests/test_list.py"
+            "program": "${cwd}/src/tests/test_dict.py"
         },
         {
             "name": "datatype/dict clear COLLECT <good>",
