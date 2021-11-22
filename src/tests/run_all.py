@@ -15,30 +15,48 @@ good_files_matcher = "good*.json"
 bad_files_matcher = "bad*.json"
 target_filename = "good.jsonl"
 
-def do():
+
+def run_all():
     for datatype in os.listdir(PROGRAMS_DIR):
         if datatype == '__init__.py' or datatype == "__pycache__":
             continue
 
-        for method in os.listdir(f"{PROGRAMS_DIR}{datatype}/"):
-            if method == '__init__.py' or method == "__pycache__":
-                continue
+        run_datatype(datatype)
 
-            program = importlib.import_module(
-                f"programs.datatype.{datatype}.{method}.program")
 
-            good_data_files = glob.glob(
-                f"{DATA_DIR}{datatype}/{method}/{good_files_matcher}")
-                
-            bad_data_files = glob.glob(
-                f"{DATA_DIR}{datatype}/{method}/{bad_files_matcher}")
+def run_datatype(datatype):
+    for method in os.listdir(f"{PROGRAMS_DIR}{datatype}/"):
+        if method == '__init__.py' or method == "__pycache__":
+            continue
 
-            target_file = glob.glob(
-                f"{OUTPUT_DIR}{datatype}/{method}/{target_filename}")[0]
+        run_method(datatype, method)
 
-            print(f"Running scenarios for \'{datatype}\' and overloaded method \'{method}\'")
-            run_scenarios(program, good_data_files, bad_data_files, target_file,
-                f"{OUTPUT_DIR}{datatype}/{method}/")
+'''
+    Import a module that calls {method} on {datatype}
+
+    Collect input files
+
+    Collect target files
+
+    Run all scenarios for above files
+'''
+def run_method(datatype, method):
+    program = importlib.import_module(
+        f"programs.datatype.{datatype}.{method}.program")
+
+    good_data_files = glob.glob(
+        f"{DATA_DIR}{datatype}/{method}/{good_files_matcher}")
+
+    bad_data_files = glob.glob(
+        f"{DATA_DIR}{datatype}/{method}/{bad_files_matcher}")
+
+    target_file = glob.glob(
+        f"{OUTPUT_DIR}{datatype}/{method}/{target_filename}")[0]
+
+    print(
+        f"Running scenarios for \'{datatype}\' and overloaded method \'{method}\'")
+    run_scenarios(program, good_data_files, bad_data_files, target_file,
+                  f"{OUTPUT_DIR}{datatype}/{method}/")
 
 
 def run_scenarios(program, good_data_files, bad_data_files, target_file, output_dir):
@@ -73,7 +91,11 @@ def run_scenarios(program, good_data_files, bad_data_files, target_file, output_
         ], program)
 
 
-def collect_good(config, program):
+def collect_good(config, program, verbose=False):
+
+    if verbose:
+        config.append('-v')
+
     myUser = init_program(config)
     program.main(myUser)
 
@@ -93,7 +115,10 @@ def collect_good(config, program):
         pass
 
 
-def match_bad(config, program):
+def match_bad(config, program, verbose=False):
+    if verbose:
+        config.append('-v')
+
     myUser = init_program(config)
     with pytest.raises(Exception) as e:
         program.main(myUser)
@@ -104,7 +129,10 @@ def match_bad(config, program):
     assert tracker.mode == 'match'
 
 
-def match_good(config, program):
+def match_good(config, program, verbose=False):
+    if verbose:
+        config.append('-v')
+
     myUser = init_program(config)
     program.main(myUser)
 
@@ -115,4 +143,5 @@ def match_good(config, program):
 
 
 if __name__ == "__main__":
-    do()
+    # run_method('dict', 'clear')
+    run_all()
