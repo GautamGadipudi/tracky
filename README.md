@@ -66,7 +66,7 @@ This approach is recommended when debugging.
 # open cloned repository in VSCode
 code .
 ```
-> or just open the cloned repository in a new VSCode window 
+<sup>or just open the cloned repository in a new VSCode window </sup>
 
     1. Open the "Run" tab in VSCode
     (shortcut - <kbd>shift</kbd> + <kbd>⌘</kbd> + <kbd>D</kbd>)
