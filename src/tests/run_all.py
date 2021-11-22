@@ -15,8 +15,6 @@ good_files_matcher = "good*.json"
 bad_files_matcher = "bad*.json"
 target_filename = "good.jsonl"
 
-print(os.getcwd())
-
 def do():
     for datatype in os.listdir(PROGRAMS_DIR):
         if datatype == '__init__.py' or datatype == "__pycache__":
@@ -31,6 +29,7 @@ def do():
 
             good_data_files = glob.glob(
                 f"{DATA_DIR}{datatype}/{method}/{good_files_matcher}")
+                
             bad_data_files = glob.glob(
                 f"{DATA_DIR}{datatype}/{method}/{bad_files_matcher}")
 
