@@ -36,6 +36,7 @@ def do():
             target_file = glob.glob(
                 f"{OUTPUT_DIR}{datatype}/{method}/{target_filename}")[0]
 
+            print(f"Running scenarios for \'{datatype}\' and overloaded method \'{method}\'")
             run_scenarios(program, good_data_files, bad_data_files, target_file,
                 f"{OUTPUT_DIR}{datatype}/{method}/")
 

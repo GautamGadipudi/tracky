@@ -34,6 +34,7 @@ class Tracky:
             Path(Tracky.output_directory).mkdir(parents=True, exist_ok=True)
 
         print_tracker_config()
+            
 
     '''
         Triggered from overloaded methods
@@ -66,13 +67,14 @@ class Tracky:
         if is_match:
             print(f'## Frame #{Tracky.frame_id} matched.')
         else:
-            print(f'## Frame #{Tracky.frame_id} mismatched!')
+            print(f'## Frame #{Tracky.frame_id} mismatched! Use -v or --verbose to see more details.')
 
-            print('Got')
-            print_frame(metadata, print_type='log')
+            if Tracky.verbose:
+                print('Got')
+                print_frame(metadata, print_type='log')
 
-            print('Expected')
-            print_frame(target_metadata, print_type='log')
+                print('Expected')
+                print_frame(target_metadata, print_type='log')
 
             raise Exception("Frame mismatched")
 
