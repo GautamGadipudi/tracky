@@ -1,5 +1,5 @@
 # Silent JSON changes detector
-[![example workflow](https://github.com/GautamGadipudi/tracky/actions/workflows/main.yml/badge.svg)](https://github.com/GautamGadipudi/tracky/actions/workflows/main.yml) [![Python 3.9.4](https://img.shields.io/badge/python-3.9.4-blue.svg)](https://www.python.org/downloads/release/python-394/)
+[![example workflow](https://github.com/GautamGadipudi/tracky/actions/workflows/main.yml/badge.svg)](https://github.com/GautamGadipudi/tracky/actions/workflows/main.yml) [![Python 3.9.4](https://img.shields.io/badge/python-3.9.4-blue.svg)](https://www.python.org/downloads/release/python-394/) [![RIT-CS](https://img.shields.io/badge/RIT-CS-orange.svg)](https://www.rit.edu/study/computer-science-ms)
 
 
 ## Getting the code
