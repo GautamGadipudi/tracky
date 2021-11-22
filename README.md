@@ -32,7 +32,6 @@ export PYTHONPATH="$PYTHONPATH:<your-relative-path-to-repo>/src"
 ## Running the code
 
 ---
-**NOTE**
 
 All programs are located in `./src/programs/`
 
@@ -58,7 +57,7 @@ python3 <path-to-a-program> match
     --targetfile <filename>
 ```
 
-Use `-v` or `--verbose` to enable verbose console logging
+<sup>Use `-v` or `--verbose` to enable verbose console logging</sup>
 
 #### 2. Using built-in configurations (scenarios) in VSCode:
 This approach is recommended when debugging.
