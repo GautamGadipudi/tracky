@@ -66,14 +66,14 @@ This approach is recommended when debugging.
 # open cloned repository in VSCode
 code .
 ```
+
 <sup>or just open the cloned repository in a new VSCode window </sup>
 
-    1. Open the "Run" tab in VSCode
-    (shortcut - <kbd>shift</kbd> + <kbd>⌘</kbd> + <kbd>D</kbd>)
-
-    2. Select a scenario to run from the "RUN" dropdown (typically on the top right corner)
-
-    3. Click the green play button ("Start Debugging" button)
+<ol>
+  <li>Open the "Run" tab in VSCode (shortcut - <kbd>shift</kbd> + <kbd>⌘</kbd> + <kbd>D</kbd>)</li>
+  <li>Select a scenario to run from the "RUN" dropdown (typically on the top right corner)</li>
+  <li>Click the green play button ("Start Debugging" button)</li>
+</ol>
 
 #### 3. Run all programs (both collect and match), for all overloaded methods, for all examples
 ```bash
