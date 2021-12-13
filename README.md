@@ -1,6 +1,7 @@
 # Silent JSON changes detector
 [![example workflow](https://github.com/GautamGadipudi/tracky/actions/workflows/main.yml/badge.svg)](https://github.com/GautamGadipudi/tracky/actions/workflows/main.yml) [![Python 3.9.4](https://img.shields.io/badge/python-3.9.4-blue.svg)](https://www.python.org/downloads/release/python-394/) [![RIT-CS](https://img.shields.io/badge/RIT-CS-orange.svg)](https://www.rit.edu/study/computer-science-ms)
 
+In this capstone project, we implement a static class in Python3 with static methods to capture details about the operations - frame metadata - performed on JSON data, log this frame metadata, and match it against target frame metadata to discover examples and scenarios of silent JSON errors in Python3 programs. 
 
 ## Getting the code
 Run either of the below commands in the terminal:
