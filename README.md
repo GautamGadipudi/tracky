@@ -83,3 +83,6 @@ python3 ./src/tests/run_all.py
 
 ## Control flow
 <div align="center"> <img src="./control_flow.jpeg" width="1200"></div>
+
+## Poster
+<div align="center"> <img src="./poster.jpg" width="1200"></div>
