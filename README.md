@@ -85,4 +85,4 @@ python3 ./src/tests/run_all.py
 <div align="center"> <img src="./control_flow.jpeg" width="1200"></div>
 
 ## Poster
-<div align="center"> <img src="./Poster.jpg" width="1200"></div>
+[Link to poster](Poster.pdf)
